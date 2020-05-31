@@ -1,0 +1,6 @@
+## Interface: 80300
+## Title: Party Box
+## Author: Jason
+## Version: 1.0
+
+PartyBox.lua
