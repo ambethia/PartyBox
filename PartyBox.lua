@@ -5,8 +5,7 @@ local GRID_SIZE = 320
 
 local X_LOCATIONS = {
 	player = 0,
-	-- party1 = -GRID_SIZE * 2,
-	party1 = -200,
+	party1 = -GRID_SIZE * 2,
 	party2 = -GRID_SIZE,
 	party3 = GRID_SIZE,
 	party4 = GRID_SIZE * 2
@@ -72,20 +71,16 @@ function FRAME:CHAT_MSG_LOOT(message, playerName)
 		return
 	end
 
-	-- self:LogLoot("player", link, quantity)
 	C_ChatInfo.SendAddonMessage(ADDON, link .. ";" .. quantity, "PARTY")
 end
 
 function FRAME:CHAT_MSG_ADDON(prefix, message, _, sender)
-	print(prefix, ADDON)
 	if prefix ~= ADDON then
 		return
 	end
 
 	local link, quantity = message:match("(.*);(%d+)")
-	print(link, quantity)
 	local unit = self.partyMembers[sender:gsub("%-[^|]+", "")]
-	print(unit)
 	if unit then
 		self:LogLoot(unit, link, quantity)
 	end
